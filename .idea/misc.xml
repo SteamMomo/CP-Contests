@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/all_contest_item.xml" value="0.18795289855072464" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_all_contests.xml" value="0.13473877176901924" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_at_coder.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_codechef.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_codeforces.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_hacker_earth.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_hacker_rank.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_kick_start.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_leetcode.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_top_coder.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.115" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
