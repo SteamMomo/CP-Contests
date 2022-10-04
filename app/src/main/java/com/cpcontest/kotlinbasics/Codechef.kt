@@ -1,14 +1,14 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -16,16 +16,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class TopCoder : Fragment() {
+class Codechef : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_codeforces, container, false)
 
         val apiInterface = ApiClient.getClient().create(ApiInteface::class.java)
-        val call = apiInterface.getTopCoderContests()
+        val call = apiInterface.getCodechefContests()
 
         checkbox(view)
 
@@ -46,7 +47,10 @@ class TopCoder : Fragment() {
                     recyclerview.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
-                    val mFiles = response.body()
+                    var mFiles = response.body()
+                    if (mFiles != null) {
+                        mFiles = mFiles.sortedWith(compareBy { it.start_time })
+                    }
                     val text1 = view.findViewById<TextView>(R.id.text1)
                     val text2 = view.findViewById<TextView>(R.id.text2)
                     val text3 = view.findViewById<TextView>(R.id.text3)
@@ -77,7 +81,6 @@ class TopCoder : Fragment() {
 
         return view
     }
-
     private fun checkbox(view: View) {
         val recyclerview1 = view.findViewById<RecyclerView>(R.id.recyclerview)
         val recyclerview2 = view.findViewById<RecyclerView>(R.id.recyclerview2)
@@ -86,16 +89,16 @@ class TopCoder : Fragment() {
         val checkBox2 = view.findViewById<CheckBox>(R.id.checkbox2)
         val checkBox3 = view.findViewById<CheckBox>(R.id.checkbox3)
 
-        checkBox1.setOnCheckedChangeListener { compoundButton, b ->
-            if (!b) recyclerview1.visibility = View.VISIBLE
+        checkBox1.setOnCheckedChangeListener { _, b ->
+            if(!b) recyclerview1.visibility = View.VISIBLE
             else recyclerview1.visibility = View.GONE
         }
-        checkBox2.setOnCheckedChangeListener { compoundButton, b ->
-            if (!b) recyclerview2.visibility = View.VISIBLE
+        checkBox2.setOnCheckedChangeListener { _, b ->
+            if(!b) recyclerview2.visibility = View.VISIBLE
             else recyclerview2.visibility = View.GONE
         }
-        checkBox3.setOnCheckedChangeListener { compoundButton, b ->
-            if (!b) recyclerview3.visibility = View.VISIBLE
+        checkBox3.setOnCheckedChangeListener { _, b ->
+            if(!b) recyclerview3.visibility = View.VISIBLE
             else recyclerview3.visibility = View.GONE
         }
     }
@@ -125,8 +128,7 @@ class TopCoder : Fragment() {
         val res: MutableList<AllContestModel> = mutableListOf()
         for (x in list) {
             if (x.status.lowercase(Locale.getDefault()).contains("before") &&
-                !x.in_24_hours.lowercase().contains("yes")
-            )
+                !x.in_24_hours.lowercase().contains("yes"))
                 res.add(x)
         }
 

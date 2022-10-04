@@ -1,4 +1,4 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -48,7 +48,7 @@ class AllContestAdapter internal constructor(
             holder.type_container.visibility = View.VISIBLE
             holder.type.text = type
         }
-
+// nothing
         val inputFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss z")
         inputFormat2.timeZone = TimeZone.getTimeZone("UTC")
         val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")

@@ -1,4 +1,4 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import android.os.Bundle
 import android.util.Log
@@ -16,8 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class Leetcode : Fragment() {
-
+class HackerEarth : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,7 +24,7 @@ class Leetcode : Fragment() {
         val view = inflater.inflate(R.layout.fragment_codeforces, container, false)
 
         val apiInterface = ApiClient.getClient().create(ApiInteface::class.java)
-        val call = apiInterface.getLeetcodeContests()
+        val call = apiInterface.getHackerEarthContests()
 
         checkbox(view)
 
@@ -46,7 +45,10 @@ class Leetcode : Fragment() {
                     recyclerview.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
-                    val mFiles = response.body()
+                    var mFiles = response.body()
+                    if (mFiles != null) {
+                        mFiles = mFiles.sortedWith(compareBy { it.start_time })
+                    }
                     val text1 = view.findViewById<TextView>(R.id.text1)
                     val text2 = view.findViewById<TextView>(R.id.text2)
                     val text3 = view.findViewById<TextView>(R.id.text3)
@@ -76,7 +78,6 @@ class Leetcode : Fragment() {
 
         return view
     }
-
     private fun checkbox(view: View) {
         val recyclerview1 = view.findViewById<RecyclerView>(R.id.recyclerview)
         val recyclerview2 = view.findViewById<RecyclerView>(R.id.recyclerview2)
@@ -113,7 +114,8 @@ class Leetcode : Fragment() {
     fun get24hrs(list: List<AllContestModel>): List<AllContestModel> {
         val res: MutableList<AllContestModel> = mutableListOf()
         for (x in list) {
-            if (x.in_24_hours.lowercase().contains("yes"))
+            if (x.in_24_hours.lowercase().contains("yes") &&
+                !x.status.lowercase(Locale.getDefault()).contains("coding"))
                 res.add(x)
         }
 
@@ -125,7 +127,7 @@ class Leetcode : Fragment() {
         for (x in list) {
             if (x.status.lowercase(Locale.getDefault()).contains("before") &&
                 !x.in_24_hours.lowercase().contains("yes"))
-                    res.add(x)
+                res.add(x)
         }
 
         return res

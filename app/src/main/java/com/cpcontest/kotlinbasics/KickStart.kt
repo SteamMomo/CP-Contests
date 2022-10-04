@@ -1,14 +1,14 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -16,16 +16,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class Codeforces : Fragment() {
+class KickStart : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_codeforces, container, false)
 
         val apiInterface = ApiClient.getClient().create(ApiInteface::class.java)
-        val call = apiInterface.getCodeforcesContests()
+        val call = apiInterface.getKickStartContests()
 
         checkbox(view)
 
@@ -46,7 +45,10 @@ class Codeforces : Fragment() {
                     recyclerview.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
                     recyclerview2.isNestedScrollingEnabled = false
-                    val mFiles = response.body()
+                    var mFiles = response.body()
+                    if (mFiles != null) {
+                        mFiles = mFiles.sortedWith(compareBy { it.start_time })
+                    }
                     val text1 = view.findViewById<TextView>(R.id.text1)
                     val text2 = view.findViewById<TextView>(R.id.text2)
                     val text3 = view.findViewById<TextView>(R.id.text3)
@@ -66,8 +68,7 @@ class Codeforces : Fragment() {
                     recyclerview2.adapter = adapter2
                     recyclerview3.adapter = adapter3
                 } else
-                    progressBar.visibility = View.GONE
-            }
+                    progressBar.visibility = View.GONE            }
 
             override fun onFailure(call: Call<List<AllContestModel>>, t: Throwable) {
                 Log.d("error :", t.message.toString())
@@ -114,7 +115,8 @@ class Codeforces : Fragment() {
     fun get24hrs(list: List<AllContestModel>): List<AllContestModel> {
         val res: MutableList<AllContestModel> = mutableListOf()
         for (x in list) {
-            if (x.in_24_hours.lowercase().contains("yes"))
+            if (x.in_24_hours.lowercase().contains("yes") &&
+                !x.status.lowercase(Locale.getDefault()).contains("coding"))
                 res.add(x)
         }
 
@@ -125,11 +127,10 @@ class Codeforces : Fragment() {
         val res: MutableList<AllContestModel> = mutableListOf()
         for (x in list) {
             if (x.status.lowercase(Locale.getDefault()).contains("before") &&
-                    !x.in_24_hours.lowercase().contains("yes"))
+                !x.in_24_hours.lowercase().contains("yes"))
                 res.add(x)
         }
 
         return res
     }
-
 }

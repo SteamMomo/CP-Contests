@@ -1,4 +1,4 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import org.junit.Test
 

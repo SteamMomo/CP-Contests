@@ -1,4 +1,4 @@
-package com.example.kotlinbasics
+package com.cpcontest.kotlinbasics
 
 import android.os.Bundle
 import androidx.annotation.Nullable
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(Codechef(), "CodeChef")
         adapter.addFragment(Leetcode(), "LeetCode")
         adapter.addFragment(AtCoder(), "AtCoder")
-        adapter.addFragment(TopCoder(), "TopCoder")
+        //adapter.addFragment(TopCoder(), "TopCoder")
         adapter.addFragment(HackerEarth(), "HackerEarth")
         adapter.addFragment(HackerRank(), "HackerRank")
         adapter.addFragment(KickStart(), "Kick Start")

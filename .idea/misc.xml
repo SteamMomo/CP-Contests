@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.115" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/layout/activity_main.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/layout/all_contest_item.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/layout/fragment_all_contests.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/layout/fragment_at_coder.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/layout/fragment_codechef.xml" value="0.16304347826086957" />
+        <entry key="..\:/android apps (Kotlin)/CP Contests/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.115" />
         <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
         <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/all_contest_item.xml" value="0.18795289855072464" />
         <entry key="..\:/android apps (Kotlin)/app/src/main/res/layout/fragment_all_contests.xml" value="0.13473877176901924" />
